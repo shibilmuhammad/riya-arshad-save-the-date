@@ -12,12 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.scrollTo(0, 0);
 
+  // Initialize music player immediately so audio loads and plays from the opening screen
+  initMusicPlayer();
   initOpeningCover();
   initOpeningTilt();
   initTypewriterDua();
   initPetalAnimation();
   initScrollTransitions();
-  initMusicPlayer();
   initNavigation();
   initCalendarAction();
 });
@@ -442,10 +443,14 @@ function initScrollTransitions() {
 /* ==========================================================================
    4. FLOATING MUSIC PLAYER CONTROL & AUTOPLAY MANAGER
    ========================================================================== */
+let globalPlayAudio = null;
+
 function initMusicPlayer() {
   const musicBtn = document.getElementById('music-btn');
   const bgAudio = document.getElementById('bg-audio');
   if (!musicBtn || !bgAudio) return;
+
+  let hasStartedOnce = false;
 
   function updatePlayState(playing) {
     if (playing) {
@@ -459,10 +464,17 @@ function initMusicPlayer() {
 
   function playAudio() {
     bgAudio.volume = 0.55;
+    if (!hasStartedOnce) {
+      try {
+        bgAudio.currentTime = 0;
+      } catch (e) {}
+    }
+
     const playPromise = bgAudio.play();
     if (playPromise !== undefined) {
       return playPromise
         .then(() => {
+          hasStartedOnce = true;
           updatePlayState(true);
           cleanupAutoplayListeners();
           return true;
@@ -474,6 +486,8 @@ function initMusicPlayer() {
     }
     return Promise.resolve(false);
   }
+
+  globalPlayAudio = playAudio;
 
   function pauseAudio() {
     bgAudio.pause();
@@ -497,14 +511,19 @@ function initMusicPlayer() {
     toggleAudio();
   });
 
-  // 1. Immediately attempt autoplay on initial page load
+  // 1. Immediately attempt autoplay on initial page load & window load
   playAudio();
+  window.addEventListener('load', () => {
+    if (bgAudio.paused) {
+      playAudio();
+    }
+  });
 
   // 2. Seamless user interaction fallback:
   // Modern browsers restrict unmuted sound until the user interacts with the page.
   // The moment the user touches, scrolls, or clicks anywhere on the opening screen,
-  // we immediately start playing the music from the beginning.
-  const interactionEvents = ['touchstart', 'touchend', 'pointerdown', 'mousedown', 'click', 'wheel', 'keydown'];
+  // we immediately start playing the music from the very beginning.
+  const interactionEvents = ['touchstart', 'touchend', 'pointerdown', 'mousedown', 'click', 'wheel', 'keydown', 'scroll'];
 
   function onFirstUserInteraction() {
     if (bgAudio.paused) {
