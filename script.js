@@ -1,5 +1,5 @@
 /**
- * Wedding Invitation — Riya N & Arshad AP
+ * Nikah Ceremony — Riya N & Arshad AP
  * Smooth Dissolve Opening Screen, Falling Burgundy Petals & Leaves, Background Audio & Calendar Integration
  */
 
@@ -570,21 +570,21 @@ function initCalendarAction() {
 
   calendarBtn.addEventListener('click', () => {
     const title = "Nikah Ceremony: Riya N & Arshad AP";
-    const description = "With hearts full of joy and gratitude, we cordially invite you to celebrate the Nikah of Riya N & Arshad AP.\\n\\nDate: Saturday, 19 November 2026\\nTime: 11:00 AM\\nVenue: City Auditorium\\nLocation: https://maps.app.goo.gl/ddZ5TCMYNeJ3gXcR6";
+    const description = "With hearts full of joy and gratitude, we cordially invite you to celebrate the Nikah Ceremony of Riya N & Arshad AP.\\n\\nDate: Saturday, 19 December 2026\\nTime: 11:00 AM\\nVenue: City Auditorium\\nLocation: https://maps.app.goo.gl/ddZ5TCMYNeJ3gXcR6";
     const location = "City Auditorium";
     
-    // Date: 19 November 2026 at 11:00 AM IST (UTC+05:30) -> 05:30 UTC
-    const startDate = "20261119T053000Z";
-    const endDate = "20261119T083000Z";
+    // Date: 19 December 2026 at 11:00 AM IST (UTC+05:30) -> 05:30 UTC
+    const startDate = "20261219T053000Z";
+    const endDate = "20261219T083000Z";
 
     const icsContent = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//Riya and Arshad Wedding//Invitation//EN",
+      "PRODID:-//Riya and Arshad Nikah Ceremony//Invitation//EN",
       "CALSCALE:GREGORIAN",
       "METHOD:PUBLISH",
       "BEGIN:VEVENT",
-      `UID:wedding-riya-arshad-20261119@weddinginvitation.com`,
+      `UID:nikah-riya-arshad-20261219@nikahceremony.com`,
       `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").split(".")[0]}Z`,
       `DTSTART:${startDate}`,
       `DTEND:${endDate}`,
@@ -599,7 +599,7 @@ function initCalendarAction() {
     const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute("download", "Wedding-Invitation-Riya-and-Arshad.ics");
+    link.setAttribute("download", "Nikah-Ceremony-Riya-and-Arshad.ics");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

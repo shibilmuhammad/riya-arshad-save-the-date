@@ -1,5 +1,5 @@
 /* ==========================================================================
-   WEDDING INVITATION — RIYA N & ARSHAD AP
+   NIKAH CEREMONY INVITATION — RIYA N & ARSHAD AP
    Design Style: Luxurious Editorial Stationery, Warm Ivory & Deep Burgundy
    ========================================================================== */
 
@@ -331,7 +331,7 @@ body.cover-locked #invitation-container {
   }
 }
 
-/* Date: 19.11.2026 */
+/* Date: 19.12.2026 */
 .opening-date {
   font-family: var(--font-sans-tracked);
   font-size: 0.84rem;
@@ -855,7 +855,7 @@ body.cover-locked #invitation-container {
 }
 
 /* ==========================================================================
-   SECTION 3: WEDDING DETAILS & VENUE
+   SECTION 3: NIKAH CEREMONY DETAILS & VENUE
    ========================================================================== */
 .section-details {
   background: url('images/floral_stationery_bg.jpg') center top / cover no-repeat;
@@ -1054,8 +1054,8 @@ body.cover-locked #invitation-container {
   height: 15px;
 }
 
-/* Wedding Footer Signature */
-.wedding-footer-signature {
+/* Nikah Ceremony Footer Signature */
+.nikah-footer-signature {
   margin-top: 8px;
   padding-top: 16px;
   border-top: 1px solid rgba(62, 14, 25, 0.08);

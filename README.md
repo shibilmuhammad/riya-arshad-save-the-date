@@ -1,11 +1,11 @@
 # riya-arshad-save-the-date
 
-Luxury wedding invitation and Save the Date website for **Riya N & Arshad AP**.
+Nikah Ceremony and Save the Date invitation for **Riya N & Arshad AP**.
 
 ## Event Details
 - **Bride**: Riya N
 - **Groom**: Arshad AP
-- **Date**: Saturday, 19 November 2026
+- **Date**: Saturday, 19 December 2026
 - **Nikah Time**: 11:00 AM
 - **Venue**: City Auditorium
 - **Location**: [Google Maps Link](https://maps.app.goo.gl/ddZ5TCMYNeJ3gXcR6)
