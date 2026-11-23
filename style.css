@@ -79,19 +79,20 @@ body.cover-locked #invitation-container {
 
 /* ==========================================================================
    EXCLUSIVE OPENING COVER (INITIAL STATE ONLY)
-   Smoothly DISSOLVES to reveal the wedding invitation
+   Cinematic Staggered Entrance, Ambient Sunlight Shimmer & Smooth Dissolve
    ========================================================================== */
 .opening-cover {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 900;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 25%, #FAFAFA 0%, #E5E7EB 100%);
+  background: radial-gradient(circle at 50% 25%, #FAF9F6 0%, #E8E5DD 100%);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
+  perspective: 1200px;
   transition: 
     opacity 1.3s cubic-bezier(0.4, 0, 0.2, 1),
     transform 1.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -101,8 +102,8 @@ body.cover-locked #invitation-container {
 
 .opening-cover.dissolving {
   opacity: 0;
-  transform: scale(1.05);
-  filter: blur(6px);
+  transform: scale(1.06);
+  filter: blur(8px);
   pointer-events: none;
 }
 
@@ -113,21 +114,50 @@ body.cover-locked #invitation-container {
   height: 100dvh;
   background: url('images/opening_cover_bg.jpg') center center / cover no-repeat;
   box-shadow: 
-    0 15px 50px -10px rgba(0, 0, 0, 0.14),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
+    0 25px 70px -15px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 600px) {
   .opening-card {
     height: 92vh;
     max-height: 860px;
-    border-radius: 12px;
+    border-radius: 14px;
+  }
+}
+
+/* Subtle Shifting Sunlight & Soft Leaf Shadow Play */
+.opening-sunlight-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.6) 0%, transparent 60%),
+              radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.35) 0%, transparent 50%);
+  mix-blend-mode: overlay;
+  animation: sunlightShift 10s infinite alternate ease-in-out;
+  z-index: 2;
+}
+
+@keyframes sunlightShift {
+  0% {
+    opacity: 0.45;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03) translate(-8px, 6px);
+  }
+  100% {
+    opacity: 0.55;
+    transform: scale(0.98) translate(6px, -4px);
   }
 }
 
@@ -142,38 +172,91 @@ body.cover-locked #invitation-container {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: -28px; /* Balanced centering between corner floral elements */
+  margin-top: -20px;
 }
 
-/* Monogram — Bigger & Centered */
+/* Monogram — Bigger, Centered & Animated Entrance with Subtle Breathing */
 .opening-monogram-wrapper {
   width: 250px;
   height: 190px;
-  margin: 0 auto 30px;
+  margin: 0 auto 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  animation: 
+    monogramEntrance 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards,
+    floatMonogram 6.5s infinite ease-in-out 1.5s;
 }
 
 .opening-monogram-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+  position: relative;
+  z-index: 2;
 }
 
-/* Names: RIYA   ARSHAD */
+.monogram-shimmer-glow {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(179, 142, 90, 0.18) 0%, transparent 70%);
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: 1;
+  animation: pulseGlow 4s infinite alternate ease-in-out;
+}
+
+@keyframes monogramEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(22px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes floatMonogram {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0.85;
+    transform: scale(1.1);
+  }
+}
+
+/* Names: RIYA   ARSHAD — Staggered Expanding Reveal */
 .opening-names {
   font-family: var(--font-sans-tracked);
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.34em;
   color: var(--color-slate-text);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: namesEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.45s backwards;
 }
 
 .opening-name {
@@ -185,18 +268,93 @@ body.cover-locked #invitation-container {
   width: 24px;
 }
 
-/* Date: 19.11.2026 — with comfortable space below */
+@keyframes namesEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+    letter-spacing: 0.16em;
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.34em;
+    filter: blur(0);
+  }
+}
+
+/* Hairline Divider with Glinting Star */
+.opening-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  margin: 0 auto 12px;
+  color: var(--color-gold-accent);
+  animation: dividerEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s backwards;
+}
+
+.opening-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(179, 142, 90, 0.5), transparent);
+}
+
+.opening-divider-star {
+  font-size: 0.65rem;
+  padding: 0 10px;
+  color: var(--color-gold-accent);
+  display: inline-block;
+  animation: starGlint 3.6s infinite ease-in-out;
+}
+
+@keyframes dividerEntrance {
+  0% {
+    width: 20px;
+    opacity: 0;
+  }
+  100% {
+    width: 140px;
+    opacity: 1;
+  }
+}
+
+@keyframes starGlint {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.35) rotate(90deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(179, 142, 90, 0.7));
+  }
+}
+
+/* Date: 19.11.2026 */
 .opening-date {
   font-family: var(--font-sans-tracked);
   font-size: 0.84rem;
   font-weight: 500;
   letter-spacing: 0.26em;
   color: var(--color-slate-muted);
-  margin-bottom: 28px;
+  margin-bottom: 22px;
   opacity: 0.9;
+  animation: dateEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s backwards;
 }
 
-/* Sacred Marriage Dua (Typewriter) — spaced comfortably below */
+@keyframes dateEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+/* Sacred Marriage Dua (Typewriter) */
 .opening-dua-wrapper {
   margin: 0 auto;
   min-height: 2.8rem;
@@ -205,6 +363,18 @@ body.cover-locked #invitation-container {
   justify-content: center;
   width: 100%;
   max-width: 340px;
+  animation: duaEntrance 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s backwards;
+}
+
+@keyframes duaEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .opening-dua-text {
@@ -257,71 +427,85 @@ body.cover-locked #invitation-container {
   }
 }
 
-/* Hairline Divider with Star */
-.opening-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  margin: 0 auto 24px;
-  color: var(--color-taupe-monogram);
-}
-
-.opening-divider-line {
-  flex: 1;
-  height: 1px;
-  background-color: var(--color-taupe-light);
-}
-
-.opening-divider-star {
-  font-size: 0.65rem;
-  padding: 0 10px;
-  color: var(--color-taupe-monogram);
-  opacity: 0.85;
-}
-
-/* Arabic Bismillah */
-.opening-bismillah-text {
-  font-family: var(--font-arabic);
-  font-size: 1.48rem;
-  color: var(--color-taupe-monogram);
-  line-height: 1.6;
-  letter-spacing: 0.02em;
-  margin-bottom: 50px;
-}
-
-/* Subtle Interactive Hint */
+/* Animated Elegant Tap/Scroll Invitation Hint */
 .opening-tap-hint {
+  margin-top: 26px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--color-taupe-monogram);
-  opacity: 0.65;
-  transition: opacity 0.3s ease;
-  animation: pulseHint 2.4s infinite ease-in-out;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  animation: hintEntrance 1s ease-out 1.6s backwards;
+  transition: transform 0.25s ease;
+}
+
+.opening-tap-hint:hover {
+  transform: translateY(2px);
+}
+
+.hint-pulse-ring {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(179, 142, 90, 0.35);
+  top: 14px;
+  pointer-events: none;
+  animation: pulseRing 2.4s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .hint-text {
   font-family: var(--font-sans-tracked);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.26em;
+  color: var(--color-slate-muted);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  animation: hintPulse 2.8s infinite ease-in-out;
 }
 
 .hint-chevron {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
+  color: var(--color-slate-text);
   animation: bounceHint 2.4s infinite ease-in-out;
 }
 
-@keyframes pulseHint {
+@keyframes hintEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hintPulse {
   0%, 100% {
-    opacity: 0.45;
+    opacity: 0.55;
   }
   50% {
+    opacity: 0.95;
+    color: var(--color-burgundy-primary);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.65);
     opacity: 0.85;
+  }
+  60% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
   }
 }
 
@@ -344,7 +528,7 @@ body.cover-locked #invitation-container {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 50;
+  z-index: 950; /* Floats over opening cover and invitation */
 }
 
 /* Ambient Paper Texture Overlay */

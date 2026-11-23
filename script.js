@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);
 
   initOpeningCover();
+  initOpeningTilt();
   initTypewriterDua();
   initPetalAnimation();
   initScrollTransitions();
@@ -20,6 +21,37 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initCalendarAction();
 });
+
+/* ==========================================================================
+   3D PERSPECTIVE TILT ON OPENING CARD
+   ========================================================================== */
+function initOpeningTilt() {
+  const card = document.querySelector('.opening-card');
+  const cover = document.getElementById('opening-cover');
+  if (!card || !cover) return;
+
+  let isTouch = false;
+  window.addEventListener('touchstart', () => { isTouch = true; }, { passive: true });
+
+  cover.addEventListener('mousemove', (e) => {
+    if (isTouch) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const tiltX = (y / (rect.height / 2)) * -3.5;
+    const tiltY = (x / (rect.width / 2)) * 3.5;
+    card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
+  });
+
+  cover.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+  });
+
+  cover.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.1s ease-out';
+  });
+}
 
 /* ==========================================================================
    TYPEWRITER DUA ANIMATION
