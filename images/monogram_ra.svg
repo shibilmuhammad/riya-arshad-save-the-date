@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 230" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="slateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#282B30"/>
+      <stop offset="50%" stop-color="#3A3E44"/>
+      <stop offset="100%" stop-color="#222528"/>
+    </linearGradient>
+    <filter id="monogramSoftShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#111315" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <g filter="url(#monogramSoftShadow)">
+    <!-- Letter R -->
+    <text x="42" y="172" font-family="'Playfair Display', 'Cormorant Garamond', 'Didot', 'Bodoni MT', Georgia, serif" font-size="185" font-weight="400" fill="url(#slateGrad)" letter-spacing="-2px">R</text>
+    
+    <!-- Letter A closely kerned and slightly overlapping -->
+    <text x="136" y="172" font-family="'Playfair Display', 'Cormorant Garamond', 'Didot', 'Bodoni MT', Georgia, serif" font-size="185" font-weight="400" fill="url(#slateGrad)" letter-spacing="-2px">A</text>
+    
+    <!-- Swooping elegant intertwining serif curve connecting R leg under A stem -->
+    <path d="M114 168 C148 186 182 184 214 170 C230 163 240 166 248 174" stroke="url(#slateGrad)" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

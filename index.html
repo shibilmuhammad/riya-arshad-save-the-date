@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="cover-locked">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Save the Date | Wedding Invitation — Riya N &amp; Arshad AP</title>
+  
+  <!-- SEO & Social Media Metadata -->
+  <meta name="title" content="Save the Date | Wedding Invitation — Riya N &amp; Arshad AP">
+  <meta name="description" content="With hearts full of joy and gratitude, we cordially invite you to join us with your family as we celebrate the Nikah of Riya N &amp; Arshad AP on Saturday, 19 November 2026 at City Auditorium.">
+  <meta name="theme-color" content="#FAF7F2">
+
+  <!-- Open Graph / WhatsApp / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Riya &amp; Arshad Wedding">
+  <meta property="og:title" content="Save the Date | Riya N &amp; Arshad AP">
+  <meta property="og:description" content="We cordially invite you to celebrate the Nikah of Riya N &amp; Arshad AP • Saturday, 19 November 2026 at City Auditorium.">
+  <meta property="og:image" content="images/og_preview.jpg">
+  <meta property="og:image:secure_url" content="images/og_preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="576">
+  <meta property="og:image:alt" content="Save the Date | Wedding Invitation — Riya N &amp; Arshad AP">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Save the Date | Riya N &amp; Arshad AP">
+  <meta name="twitter:description" content="We cordially invite you to celebrate the Nikah of Riya N &amp; Arshad AP • Saturday, 19 November 2026 at City Auditorium.">
+  <meta name="twitter:image" content="images/og_preview.jpg">
+
+  <!-- WhatsApp & Messaging Platform Thumbnail Link -->
+  <link rel="image_src" href="images/og_preview.jpg">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cover-locked">
+
+  <!-- =========================================================================
+       EXCLUSIVE OPENING SECTION (INITIAL SCREEN ONLY)
+       Exact visual design from reference image:
+       - Torn deckled paper background texture
+       - Interlocking R & A Monogram in warm taupe
+       - "RIYA   ARSHAD"
+       - Hairline divider with four-point star
+       - "بسم الله الرحمن الرحيم"
+       Smoothly DISSOLVES on click or scroll to reveal the invitation.
+       ========================================================================= -->
+  <div id="opening-cover" class="opening-cover" role="button" tabindex="0" aria-label="Tap or scroll anywhere to open wedding invitation">
+    <div class="opening-card">
+      <div class="opening-content">
+        
+        <!-- Interlocking R & A Monogram -->
+        <div class="opening-monogram-wrapper" aria-label="Monogram R and A">
+          <img src="images/monogram_ra.svg" alt="Monogram R and A" class="opening-monogram-img">
+        </div>
+
+        <!-- Names: RIYA   ARSHAD -->
+        <h1 class="opening-names">
+          <span class="opening-name">RIYA</span>
+          <span class="opening-name-space">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span class="opening-name">ARSHAD</span>
+        </h1>
+
+        <!-- Date: 19.11.2026 -->
+        <p class="opening-date">19.11.2026</p>
+
+        <!-- Sacred Marriage Dua: First half static, second half typewriter -->
+        <div class="opening-dua-wrapper">
+          <p class="opening-dua-text" lang="ar" dir="rtl">
+            <span class="dua-line-1">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا</span>
+            <span class="dua-line-2"><span id="typewriter-dua"></span><span class="typewriter-cursor" aria-hidden="true">|</span></span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Continuous Falling Burgundy Petals Canvas -->
+  <canvas id="petals-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Paper Texture Overlay -->
+  <div class="paper-texture-overlay" aria-hidden="true"></div>
+
+  <!-- Background Music Element (Autoplay Enabled) -->
+  <audio id="bg-audio" src="audio/audio.mp3" preload="auto" autoplay loop></audio>
+
+  <!-- Floating Music Control (Bottom-Right) -->
+  <div class="music-control-wrapper">
+    <button id="music-btn" class="music-btn" aria-label="Toggle background music" title="Play / Pause Background Music">
+      <span class="music-icon-wrapper">
+        <svg class="music-icon music-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18V5l12-2v13"></path>
+          <circle cx="6" cy="18" r="3"></circle>
+          <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+        <span class="music-waves" aria-hidden="true">
+          <span class="wave-bar wave-1"></span>
+          <span class="wave-bar wave-2"></span>
+          <span class="wave-bar wave-3"></span>
+        </span>
+      </span>
+      <span class="music-btn-label">Music</span>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       MAIN CONTINUOUS WEDDING INVITATION EXPERIENCE
+       Revealed smoothly once opening cover dissolves.
+       ========================================================================= -->
+  <main class="invitation-container" id="invitation-container">
+    <div class="invitation-card">
+
+      <!-- ===================================================================
+           INVITATION MESSAGE SECTION (Revealed on dissolve)
+           =================================================================== -->
+      <section class="invitation-section section-invitation" id="invitation-section" aria-label="Invitation Message">
+        <div class="section-content invitation-content fade-in-up is-visible">
+          
+          <!-- Arabic Bismillah Calligraphy -->
+          <div class="bismillah-container" aria-label="Bismillah Calligraphy">
+            <img src="images/bismillah.svg" alt="Bismillah Calligraphy" class="bismillah-svg">
+          </div>
+
+          <!-- English Translation -->
+          <div class="bismillah-translation">
+            <p class="translation-line-1">In the Name of Allah</p>
+            <p class="translation-line-2">The Most Gracious &amp; The Most Merciful</p>
+          </div>
+
+          <!-- Floral Four-Petal Ornament Divider -->
+          <div class="floral-ornament-divider" aria-hidden="true">
+            <span class="divider-hairline"></span>
+            <svg class="floral-flourish" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3 C12 7, 14 9, 18 9 C14 9, 12 11, 12 15 C12 11, 10 9, 6 9 C10 9, 12 7, 12 3 Z"/>
+              <circle cx="12" cy="9" r="1.2"/>
+              <circle cx="9" cy="12" r="1.2"/>
+              <circle cx="15" cy="12" r="1.2"/>
+              <circle cx="12" cy="15" r="1.2"/>
+            </svg>
+            <span class="divider-hairline"></span>
+          </div>
+
+          <!-- You Are Cordially Invited -->
+          <h2 class="invitation-heading">You Are Cordially Invited</h2>
+
+          <!-- Floral Four-Petal Ornament Divider -->
+          <div class="floral-ornament-divider" aria-hidden="true">
+            <span class="divider-hairline"></span>
+            <svg class="floral-flourish" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3 C12 7, 14 9, 18 9 C14 9, 12 11, 12 15 C12 11, 10 9, 6 9 C10 9, 12 7, 12 3 Z"/>
+              <circle cx="12" cy="9" r="1.2"/>
+              <circle cx="9" cy="12" r="1.2"/>
+              <circle cx="15" cy="12" r="1.2"/>
+              <circle cx="12" cy="15" r="1.2"/>
+            </svg>
+            <span class="divider-hairline"></span>
+          </div>
+
+          <!-- Heartfelt Invitation Message -->
+          <p class="invitation-text">
+            With hearts full of joy and gratitude, we cordially invite you to join us with your family as we celebrate the Nikah of our beloved ones. Your presence and prayers will make this special occasion truly memorable.
+          </p>
+
+          <!-- Scroll Guide Indicator to Couple Section -->
+          <div class="scroll-indicator" id="scroll-indicator-invitation" role="button" tabindex="0" aria-label="Scroll down to bride and groom">
+            <span class="scroll-text">SCROLL FOR DETAILS</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           BRIDE & GROOM CELEBRATION SECTION (Middle Page)
+           =================================================================== -->
+      <section class="invitation-section section-couple" id="couple-section" aria-label="Bride and Groom">
+        <div class="section-content couple-content fade-in-up is-visible">
+          
+          <!-- Quranic Marriage Blessing -->
+          <div class="couple-blessing-wrapper">
+            <p class="couple-quran-arabic" lang="ar" dir="rtl">
+              <span class="quran-line">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ</span>
+              <span class="quran-line">أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</span>
+            </p>
+            <p class="couple-quran-surah">(SURAH AR-RUM : 21)</p>
+            <p class="couple-quran-trans">“And He placed between you affection and mercy”</p>
+          </div>
+
+          <!-- Couple Names Container -->
+          <div class="couple-names-block">
+            <!-- Bride -->
+            <div class="couple-person bride-block">
+              <h2 class="couple-name">Riya N</h2>
+            </div>
+
+            <!-- Elegant Gold Ampersand Divider -->
+            <div class="couple-ampersand-divider" aria-hidden="true">
+              <span class="couple-divider-line"></span>
+              <span class="couple-ampersand">&amp;</span>
+              <span class="couple-divider-line"></span>
+            </div>
+
+            <!-- Groom -->
+            <div class="couple-person groom-block">
+              <h2 class="couple-name">Arshad AP</h2>
+            </div>
+          </div>
+
+          <!-- Wedding Date -->
+          <div class="couple-date-badge">
+            <p class="couple-date-text">SATURDAY, 19 NOVEMBER 2026</p>
+          </div>
+
+          <!-- Scroll Guide Indicator to Event Details -->
+          <div class="scroll-indicator" id="scroll-indicator-couple" role="button" tabindex="0" aria-label="Scroll down to wedding details">
+            <span class="scroll-text">SCROLL FOR DETAILS</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           WEDDING DETAILS & VENUE SECTION
+           =================================================================== -->
+      <section class="invitation-section section-details" id="details-section" aria-label="Wedding Details and Venue">
+        <div class="section-content details-content fade-in-up is-visible">
+          
+          <!-- Decorative Top Ornament -->
+          <div class="details-top-ornament" aria-hidden="true">
+            <svg class="floral-flourish" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3 C12 7, 14 9, 18 9 C14 9, 12 11, 12 15 C12 11, 10 9, 6 9 C10 9, 12 7, 12 3 Z"/>
+            </svg>
+          </div>
+
+          <!-- Event Title -->
+          <h2 class="event-title">NIKKAH</h2>
+
+          <!-- Date & Time -->
+          <div class="event-schedule">
+            <p class="event-date">Saturday, 19 November 2026</p>
+            <p class="event-time">11:00 AM</p>
+          </div>
+
+          <!-- Decorative Middle Ornament -->
+          <div class="floral-ornament-divider" aria-hidden="true">
+            <span class="divider-hairline"></span>
+            <svg class="floral-flourish" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3 C12 7, 14 9, 18 9 C14 9, 12 11, 12 15 C12 11, 10 9, 6 9 C10 9, 12 7, 12 3 Z"/>
+            </svg>
+            <span class="divider-hairline"></span>
+          </div>
+
+          <!-- Venue Title -->
+          <div class="venue-block">
+            <p class="venue-label">VENUE</p>
+            <h3 class="venue-name">CITY AUDITORIUM</h3>
+          </div>
+
+          <!-- Location Card Container -->
+          <div class="location-card">
+            <div class="location-card-content">
+              <div class="location-pin-wrapper" aria-hidden="true">
+                <svg class="location-pin-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+              </div>
+              <div class="location-text-info">
+                <p class="location-venue-title">City Auditorium</p>
+              </div>
+            </div>
+            
+            <a href="https://maps.app.goo.gl/ddZ5TCMYNeJ3gXcR6" target="_blank" rel="noopener noreferrer" class="btn-view-location" aria-label="View City Auditorium on Google Maps">
+              <span>VIEW LOCATION</span>
+              <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Add To Calendar Action -->
+          <div class="calendar-action-wrapper">
+            <button id="add-to-calendar-btn" class="btn-calendar" aria-label="Add wedding date to calendar">
+              <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Add to Calendar</span>
+            </button>
+          </div>
+
+          <!-- Family Warm Wishes Signature -->
+          <div class="wedding-footer-signature">
+            <p class="signature-text">With prayers &amp; warm regards from our families</p>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
